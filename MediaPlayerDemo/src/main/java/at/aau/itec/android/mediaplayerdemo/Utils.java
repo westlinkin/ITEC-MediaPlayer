@@ -64,11 +64,36 @@ public class Utils {
         return source;
     }
 
+    public static MediaSource uriToMediaSource(Context context, Uri uri, Uri audioUri) {
+        MediaSource source = null;
+        if(uri.toString().endsWith(".mpd")) {
+            AdaptationLogic adaptationLogic;
+
+            //adaptationLogic = new ConstantPropertyBasedLogic(ConstantPropertyBasedLogic.Mode.HIGHEST_BITRATE);
+            adaptationLogic = new SimpleRateBasedAdaptationLogic();
+
+            source = new DashSource(context, uri, adaptationLogic);
+        } else {
+            source = new UriSource(context, uri, audioUri);
+        }
+        return source;
+    }
+
     public static void uriToMediaSourceAsync(final Context context, Uri uri, MediaSourceAsyncCallbackHandler callback) {
         LoadMediaSourceAsyncTask loadingTask = new LoadMediaSourceAsyncTask(context, callback);
 
         try {
             loadingTask.execute(uri).get();
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage(), e);
+        }
+    }
+
+    public static void uriToMediaSourceAsync(final Context context, Uri uri, Uri audioUri, MediaSourceAsyncCallbackHandler callback) {
+        LoadMediaSourceAsyncTask loadingTask = new LoadMediaSourceAsyncTask(context, callback);
+
+        try {
+            loadingTask.execute(uri, audioUri).get();
         } catch (Exception e) {
             Log.e(TAG, e.getMessage(), e);
         }
@@ -131,7 +156,11 @@ public class Utils {
         @Override
         protected MediaSource doInBackground(Uri... params) {
             try {
-                mMediaSource = Utils.uriToMediaSource(mContext, params[0]);
+                if (params.length == 2) {
+                    mMediaSource = Utils.uriToMediaSource(mContext, params[0], params[1]);
+                } else {
+                    mMediaSource = Utils.uriToMediaSource(mContext, params[0]);
+                }
                 return mMediaSource;
             } catch (Exception e) {
                 mException = e;

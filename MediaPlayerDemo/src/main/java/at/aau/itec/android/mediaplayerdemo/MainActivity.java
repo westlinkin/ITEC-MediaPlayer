@@ -207,7 +207,7 @@ public class MainActivity extends Activity implements VideoURIInputDialogFragmen
         if(uri == null) {
             mVideoUriText.setText(getString(R.string.uri_missing));
 
-            mVideoViewButton.setEnabled(false);
+//            mVideoViewButton.setEnabled(false);
             mGLVideoViewButton.setEnabled(false);
             mSideBySideButton.setEnabled(false);
             mSideBySideSeekTestButton.setEnabled(false);

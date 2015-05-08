@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MediaCodecPlayer.iml" filepath="$PROJECT_DIR$/MediaCodecPlayer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ITEC-MediaPlayer.iml" filepath="$PROJECT_DIR$/ITEC-MediaPlayer.iml" />
       <module fileurl="file://$PROJECT_DIR$/MediaPlayer/MediaPlayer.iml" filepath="$PROJECT_DIR$/MediaPlayer/MediaPlayer.iml" />
       <module fileurl="file://$PROJECT_DIR$/MediaPlayer-DASH/MediaPlayer-DASH.iml" filepath="$PROJECT_DIR$/MediaPlayer-DASH/MediaPlayer-DASH.iml" />
       <module fileurl="file://$PROJECT_DIR$/MediaPlayer-GLES/MediaPlayer-GLES.iml" filepath="$PROJECT_DIR$/MediaPlayer-GLES/MediaPlayer-GLES.iml" />
@@ -12,4 +12,3 @@
     </modules>
   </component>
 </project>
-
